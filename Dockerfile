@@ -1,9 +1,11 @@
-FROM node:12-alpine as build
+FROM node:16-alpine as build
 # We compile typescript in first stage
+
+RUN echo -e
 
 # install git and node-gyp dependencies
 RUN apk update && \
-  apk add --no-cache make gcc g++ python git
+  apk add --no-cache make gcc g++ curl py-pip git
 
 # create tree backend directories
 RUN mkdir -p /app/tree-service
@@ -25,7 +27,7 @@ RUN cd /app/tree-service && \
   yarn install 
 
 #######################   Production App   ##########################
-FROM node:10-alpine
+FROM node:16-alpine
 # next stage: prepare production environment
 ENV NODE_ENV=development
 ENV PORT=3333
