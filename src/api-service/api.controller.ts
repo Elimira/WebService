@@ -18,7 +18,7 @@ export class ApiController {
   logger = new Logger();
   constructor(private readonly apiService: ApiService) {}
 
-  @Post('/update')
+  @Post('/payloads')
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() updateDataDto: UpdateDataDto): Promise<boolean> {
     const res = await this.apiService.addPayload(updateDataDto);
@@ -27,32 +27,26 @@ export class ApiController {
     return true;
   }
 
-  @Get('/search:id')
-  @ApiParam({
-    name: 'id',
-    required: true,
-    description: 'Record Id',
-    schema: { type: 'string' },
-  })
-  async getWebData(@Param('id') Id: number): Promise<IGetApiResponse> {
+  @Get('/search')
+  async getAllWebData(): Promise<IGetApiResponse> {
     try {
-      return await this.apiService.getPayloadById(new ObjectID(Id));
+      return await this.apiService.getAllPayloads();
     } catch (error) {
       this.logger.log(error);
       return { status: 404, res: [] };
     }
   }
 
-  @Get('/search')
+  @Get('/search:id')
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'Record Id',
-    schema: { type: 'integer' },
+    description: 'First, you could run the above `Get` request to fetch all payload records, then copy `id` field of one of them here.',
+    schema: { type: 'string' },
   })
-  async getAllWebData(): Promise<IGetApiResponse> {
+  async getWebData(@Param('id') Id: number): Promise<IGetApiResponse> {
     try {
-      return await this.apiService.getAllPayloads();
+      return await this.apiService.getPayloadById(new ObjectID(Id));
     } catch (error) {
       this.logger.log(error);
       return { status: 404, res: [] };
