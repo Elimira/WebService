@@ -11,6 +11,7 @@ export class AppController {
   @Get()
   async getReady(): Promise<IGetTreeResponse> {
     try {
+      this.logger.log("hey hi");
       const collExist = await this.treeService.checkCollectionExistence();
       if (!collExist) {
         this.logger.log('Initializing: is generating tree...');

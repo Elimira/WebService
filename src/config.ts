@@ -1,5 +1,6 @@
 import { IMongoModuleOptions } from './mongo/index';
 import { WorkLoadConcern }     from './app/types/WorkLoad';
+import { DocumentBuilder } from '@nestjs/swagger';
 import 'dotenv/config';
 
 const appKey        = process.env.APP_KEY        || 'some-random-string';
@@ -16,11 +17,18 @@ const config: IConfig = {
     host: process.env.MONGO_HOST || 'localhost:27017',
   },
  dbWorkLoad: WorkLoadConcern.READ_INTENSIVE,
+ openAPIObject: new DocumentBuilder()
+  .setTitle('Unity Assignment')
+  .setDescription('The Web Service API descriptions')
+  .setVersion('1.0')
+  .addTag('unity')
+  .build()
 };
-export default config;
 
+export default config;
 interface IConfig {
   app:    any;
   mongo: IMongoModuleOptions;
   dbWorkLoad: WorkLoadConcern;
+  openAPIObject: any
 };
