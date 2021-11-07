@@ -19,15 +19,19 @@ export class ApiService {
     message,
     send_from_ip,
     priority,
-  }: UpdateDataDto): Promise<any> {
-    const res = await this.mongoConnection.collection('data').insertOne({
-      ts: ts,
-      sender: sender,
-      message: message,
-      send_from_ip: send_from_ip,
-      priority: priority,
-    });
-    return res.ops[0];
+  }: UpdateDataDto): Promise<boolean> {
+    try {
+      await this.mongoConnection.collection('data').insertOne({
+        ts: ts,
+        sender: sender,
+        message: message,
+        send_from_ip: send_from_ip,
+        priority: priority,
+      });
+      return true; //res.ops[0]
+    } catch (error) {
+      return false;
+    }
   }
 
   async getAllPayloads(): Promise<IGetApiResponse> {

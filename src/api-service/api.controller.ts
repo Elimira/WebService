@@ -21,10 +21,7 @@ export class ApiController {
   @Post('/payloads')
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() updateDataDto: UpdateDataDto): Promise<boolean> {
-    const res = await this.apiService.addPayload(updateDataDto);
-    this.logger.log(`res is ${res}`);
-    this.logger.log(JSON.stringify(res));
-    return true;
+    return await this.apiService.addPayload(updateDataDto);
   }
 
   @Get('/search')
@@ -41,7 +38,8 @@ export class ApiController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'First, you could run the above `Get` request to fetch all payload records, then copy the `_id` field of one of them here.',
+    description:
+      'First, you could run the above `Get` request to fetch all payload records, then copy the `_id` field of one of them here.',
     schema: { type: 'string' },
   })
   async getWebData(@Param('id') id: string): Promise<IGetApiResponse> {
