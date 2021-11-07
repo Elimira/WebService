@@ -49,7 +49,7 @@ export class ConnectionService {
         return MongoClient.connect(connectionURL, {
           useUnifiedTopology: true,
           useNewUrlParser: true,
-          appname: 'tree-service',
+          appname: 'web-service',
           reconnectTries: retryAttempts,
           autoReconnect: true,
         })

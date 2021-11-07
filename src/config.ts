@@ -1,5 +1,4 @@
 import { IMongoModuleOptions } from './mongo/index';
-import { WorkLoadConcern }     from './app/types/WorkLoad';
 import { DocumentBuilder } from '@nestjs/swagger';
 import 'dotenv/config';
 
@@ -16,7 +15,6 @@ const config: IConfig = {
     name: process.env.MONGO_DB_NAME || 'Project',
     host: process.env.MONGO_HOST || 'localhost:27017',
   },
- dbWorkLoad: WorkLoadConcern.READ_INTENSIVE,
  openAPIObject: new DocumentBuilder()
   .setTitle('Assignment')
   .setDescription('The Web Service API descriptions')
@@ -29,6 +27,5 @@ export default config;
 interface IConfig {
   app:    any;
   mongo: IMongoModuleOptions;
-  dbWorkLoad: WorkLoadConcern;
   openAPIObject: any
 };
