@@ -18,10 +18,10 @@ const config: IConfig = {
   },
  dbWorkLoad: WorkLoadConcern.READ_INTENSIVE,
  openAPIObject: new DocumentBuilder()
-  .setTitle('Unity Assignment')
+  .setTitle('Assignment')
   .setDescription('The Web Service API descriptions')
   .setVersion('1.0')
-  .addTag('unity')
+  .addTag('Unity ♥')
   .build()
 };
 

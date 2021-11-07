@@ -41,7 +41,6 @@ export class ConnectionService {
 
 		const connectionURL = `mongodb://${authString}${config.host}/${config.name}$`;
 
-		console.log(" url here is ", connectionURL )
 
 		return new Promise<MongoClient>((resolve, reject) => {
 			const connectToMongo = () => {
