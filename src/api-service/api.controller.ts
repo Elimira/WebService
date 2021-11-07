@@ -18,6 +18,15 @@ export class ApiController {
   logger = new Logger();
   constructor(private readonly apiService: ApiService) {}
 
+  @Post('/update')
+  @UsePipes(CustomValidationPipe)
+  async takeWebData(@Body() updateDataDto: UpdateDataDto): Promise<boolean> {
+    const res = await this.apiService.addPayload(updateDataDto);
+    this.logger.log(`res is ${res}`);
+    this.logger.log(JSON.stringify(res));
+    return true;
+  }
+
   @Get('/search:id')
   @ApiParam({
     name: 'id',
@@ -48,14 +57,5 @@ export class ApiController {
       this.logger.log(error);
       return { status: 404, res: [] };
     }
-  }
-
-  @Post('/update')
-  @UsePipes(CustomValidationPipe)
-  async takeWebData(@Body() updateDataDto: UpdateDataDto): Promise<boolean> {
-    const res = await this.apiService.addPayload(updateDataDto);
-    this.logger.log(`res is ${res}`);
-    this.logger.log(JSON.stringify(res));
-    return true;
   }
 }
