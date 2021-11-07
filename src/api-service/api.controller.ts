@@ -41,7 +41,7 @@ export class ApiController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'First, you could run the above `Get` request to fetch all payload records, then copy `id` field of one of them here.',
+    description: 'First, you could run the above `Get` request to fetch all payload records, then copy the`id` field of one of them here.',
     schema: { type: 'string' },
   })
   async getWebData(@Param('id') Id: number): Promise<IGetApiResponse> {
