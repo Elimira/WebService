@@ -6,9 +6,9 @@ import {
   IsDateString,
   IsIP,
   IsDefined,
-  IsString, 
+  IsString,
   IsNumber,
-  ValidateNested
+  ValidateNested,
 } from 'class-validator';
 
 class Message {
@@ -25,7 +25,7 @@ export class UpdateDataDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsDateString()
-  ts: string;  // 2020-02-08T0 20200208
+  ts: string; // 2020-02-08T0 20200208
 
   @ApiProperty()
   @IsNotEmpty()
@@ -41,7 +41,7 @@ export class UpdateDataDto {
   @ApiProperty()
   @IsOptional()
   @IsIP()
-  send_from_ip: string;  //684D:1111:222:3333:4444:5555:6:77  //19.117.63.126
+  send_from_ip: string; //684D:1111:222:3333:4444:5555:6:77  //19.117.63.126
   @ApiProperty()
   @IsOptional()
   @IsNumber()
