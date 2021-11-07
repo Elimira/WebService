@@ -1,6 +1,6 @@
 //import indexList from './mongoIndexes';
 import { Db, ObjectID, MongoClient } from 'mongodb';
-import { IndexDB, InjectConnection, InjectClient } from '../mongo/index';
+import { InjectConnection, InjectClient } from '../mongo/index';
 import { Injectable, Logger } from '@nestjs/common';
 import { UpdateDataDto } from './types/index';
 import { IGetApiResponse } from './interfaces';
