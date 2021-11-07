@@ -13,7 +13,6 @@ export class ApiService {
     @InjectClient() private readonly mongoClient: MongoClient,
   ) {}
 
-  //@IndexDB("tree", indexList)
   async addPayload({
     ts,
     sender,
@@ -21,7 +20,6 @@ export class ApiService {
     send_from_ip,
     priority,
   }: UpdateDataDto): Promise<any> {
-    this.logger.log('payload is going to be add');
     const res = await this.mongoConnection.collection('data').insertOne({
       ts: ts,
       sender: sender,
@@ -49,7 +47,7 @@ export class ApiService {
     try {
       const payload = await this.mongoConnection
         .collection('data')
-        .findOne({_id: id})
+        .findOne({ _id: id });
       return { status: 200, res: [payload] };
     } catch (error) {
       return this.handleError(error);
