@@ -2,12 +2,13 @@ import config from '../config';
 import { Module } from '@nestjs/common';
 import { AppController } from '../app/app.controller';
 import { MongoModule } from '../mongo/mongo.module';
-import { ApiController } from '../publisher-service/publish.controller';
-import { ApiService } from '../publisher-service/publish.service';
-import { ApiModule } from 'src/publisher-service/publish.module';
+import { PublisherController } from '../publisher/publish.controller';
+import { PublisherService } from '../publisher/publish.service';
+import { PublisherModule } from 'src/publisher/publish.module';
+import { ConsumerController } from 'src/consumer/consumer.controller';
 @Module({
-  imports: [ApiModule, MongoModule.forRoot(config.mongo)],
-  controllers: [AppController, ApiController],
-  providers: [ApiService],
+  imports: [PublisherModule, ConsumerController,  MongoModule.forRoot(config.mongo)],
+  controllers: [AppController, PublisherController],
+  providers: [PublisherService],
 })
 export class AppModule {}

@@ -2,11 +2,11 @@
 import { Db, ObjectID } from 'mongodb';
 import { InjectConnection } from '../mongo/index';
 import { Injectable, Logger } from '@nestjs/common';
-import { Status, UpdateDataDto } from './types/index';
+import { Status, CreateDataDto } from './types/index';
 import { IGetApiResponse } from './interfaces';
 
 @Injectable()
-export class ApiService {
+export class PublisherService {
   logger = new Logger();
   constructor(@InjectConnection() private readonly mongoConnection: Db) {}
 
@@ -16,7 +16,7 @@ export class ApiService {
     message,
     send_from_ip,
     priority,
-  }: UpdateDataDto): Promise<boolean> {
+  }: CreateDataDto): Promise<boolean> {
     try {
       await this.mongoConnection.collection('data').insertOne({
         ts: ts,

@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
-import { ApiController } from './publish.controller';
-import { ApiService } from './publish.service';
+import { PublisherController } from './publish.controller';
+import { PublisherService } from './publish.service';
  
 @Module({
   imports: [ConfigModule],
-  controllers: [ApiController],
+  controllers: [PublisherController],
   providers: [
-    ApiService,
+    PublisherService,
     {
       provide: 'PUBLISH_PAYLOAD',
       useFactory: (configService: ConfigService) => {
@@ -29,4 +29,4 @@ import { ApiService } from './publish.service';
     }
   ],
 })
-export class ApiModule {}
+export class PublisherModule {}

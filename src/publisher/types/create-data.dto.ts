@@ -22,7 +22,7 @@ class Message {
   baz: string;
 }
 
-export class UpdateDataDto {
+export class CreateDataDto {
   @ApiProperty()
   @IsNotEmpty()
   ts: string;

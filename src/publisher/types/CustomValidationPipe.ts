@@ -8,11 +8,11 @@ import {
 import { Validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
 import * as IpAddress from 'ip-address';
-import { UpdateDataDto } from '.';
+import { CreateDataDto } from '.';
 
 @Injectable()
 export class CustomValidationPipe implements PipeTransform {
-  async transform(value: UpdateDataDto, metaData: ArgumentMetadata) {
+  async transform(value: CreateDataDto, metaData: ArgumentMetadata) {
     const { metatype } = metaData;
 
     if (this.isInvalidDate(value.ts)) {
