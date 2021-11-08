@@ -6,7 +6,6 @@ import {
   Body,
   Param,
   UsePipes,
-  Inject,
   ClassSerializerInterceptor,
   UseInterceptors,
 } from '@nestjs/common';

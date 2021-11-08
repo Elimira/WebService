@@ -4,10 +4,10 @@ This project was bootstrapped with [Nest](https://github.com/nestjs/nest) framew
 
 ## Table of Contents
 - [Folder Structure](#folder-structure)
-- [Available Scripts](#available-scripts)
+- [Running Program](#available-scripts)
   - [Running the app with docker](#running-the-app-with-docker)
   - [Running the app locally](#running-the-app-locally)
-  - [Test](#test)
+- [Test](#test)
 - [Access Databases](#access-databases)
 
  ## Folder Structure
@@ -50,7 +50,6 @@ WebService
 - Install yarn
 
 
-
 Follow these steps in order in the project directory:
 
 ```bash
@@ -64,6 +63,8 @@ yarn build
 yarn run start
 
 ```
+
+After running locally, you could go to http://localhost:3333/api/ address to Play with apis. 
 ### Test
 
 ```bash
