@@ -4,13 +4,13 @@ volumes:
     mongodb_data:
 
 services:  
-    tree-service:
+    web-service:
         build:
             context: .
             dockerfile: Dockerfile
         environment:
             - NODE_ENV=development
-            - MONGO_HOST=tree_mongo_1:29017
+            - MONGO_HOST=web_mongo_1:29017
         ports:
             - 3333:3333
     mongo:
@@ -20,4 +20,16 @@ services:
         command:  mongod --port 29017
         ports:
             - 29017:29017
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        hostname: rabbitmq
+        volumes:
+        - /var/lib/rabbitmq
+        ports:
+        - "5672:5672"
+        - "15672:15672"
+        env_file:
+        - ./.env
             

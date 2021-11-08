@@ -3,18 +3,31 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { ConfigService } from '@nestjs/config';
 import config from './config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
 
-  const microserviceTcp = app.connectMicroservice<MicroserviceOptions>({
+  const user =
+    configService.get('RABBITMQ_USER') || config.microserviceOptions.user;
+  const password =
+    configService.get('RABBITMQ_PASSWORD') ||
+    config.microserviceOptions.password;
+  const host =
+    configService.get('RABBITMQ_HOST') || config.microserviceOptions.host;
+  const queueName =
+    configService.get('RABBITMQ_QUEUE_NAME') ||
+    config.microserviceOptions.queueName;
+
+  await app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://localhost:5672'], //TODO: read from config file  TODO: Dockerfile rabbitmq-server 2- rabbitmq-plugins enable rabbitmq_management 3- http://localhost:15672/
-      queue: 'cats_queue',
+      urls: ['amqp://localhost:5672'],
+      queue: queueName,
       queueOptions: {
-        durable: false,
+        durable: true,
       },
     },
   });

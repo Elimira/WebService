@@ -1,5 +1,6 @@
 import { IMongoModuleOptions } from './mongo/index';
 import { DocumentBuilder } from '@nestjs/swagger';
+import IMicroserviceOptions from './app/type/IMicroserviceOptions';
 import 'dotenv/config';
 
 const appKey = process.env.APP_KEY || 'some-random-string';
@@ -21,6 +22,12 @@ const config: IConfig = {
     .setVersion('1.0')
     .addTag('Unity ♥')
     .build(),
+  microserviceOptions: {
+    user: 'admin',
+    password: 'admin',
+    host: 'localhost:5672',
+    queueName: 'email-subscribers',
+  },
 };
 
 export default config;
@@ -28,4 +35,5 @@ interface IConfig {
   app: any;
   mongo: IMongoModuleOptions;
   openAPIObject: any;
+  microserviceOptions: IMicroserviceOptions;
 }

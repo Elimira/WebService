@@ -7,22 +7,22 @@ RUN echo -e
 RUN apk update && \
   apk add --no-cache make gcc g++ curl py-pip git
 
-# create tree backend directories
-RUN mkdir -p /app/tree-service
+# create web service directories
+RUN mkdir -p /app/web-service
 
 
-RUN cd /app/tree-service 
+RUN cd /app/web-service 
 
 # install backendservicepackage.json build dependencies
-COPY package.json /app/tree-service/
-RUN cd /app/tree-service && yarn
+COPY package.json /app/web-service/
+RUN cd /app/web-service && yarn
 
 # compile and build project code
-COPY . /app/tree-service/
-RUN cd /app/tree-service && \
+COPY . /app/web-service/
+RUN cd /app/web-service && \
   yarn build
 
-RUN cd /app/tree-service && \
+RUN cd /app/web-service && \
   rm -rf node_modules && \
   yarn install 
 
@@ -42,9 +42,9 @@ RUN mkdir -p /app/current && \
 RUN mkdir -p /app/current/node_modules && \
   mkdir -p /app/current/src
 
-COPY --chown=node:node --from=build /app/tree-service/node_modules/ /app/current/node_modules
+COPY --chown=node:node --from=build /app/web-service/node_modules/ /app/current/node_modules
 
-COPY --chown=node:node --from=build /app/tree-service/dist /app/current/src
+COPY --chown=node:node --from=build /app/web-service/dist /app/current/src
 
 WORKDIR /app/current
 USER node
