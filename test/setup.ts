@@ -1,5 +1,5 @@
 import { Db } from 'mongodb';
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { mongoConnectionToken } from './../src/mongo/constants';
 import { Test, TestingModule } from '@nestjs/testing';
 
@@ -25,6 +25,15 @@ const setup = async () => {
     );
   }
   app = moduleFixture.createNestApplication();
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      forbidNonWhitelisted: true,
+      whitelist: true,
+    }),
+  );
+
   await app.init();
 };
 

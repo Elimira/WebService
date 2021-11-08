@@ -15,18 +15,27 @@ export class CustomValidationPipe implements PipeTransform {
   async transform(value: UpdateDataDto, metaData: ArgumentMetadata) {
     const { metatype } = metaData;
 
+    if (this.isInvalidDate(value.ts)) {
+      throw new HttpException(
+        `validation failed, Invalid timestamp`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     if (this.isNotIpV4(value.send_from_ip)) {
       throw new HttpException(
         `validation failed, Invalid IPv4 address`,
         HttpStatus.BAD_REQUEST,
       );
     }
+
     if (this.isEmpty(value)) {
       throw new HttpException(
         `validation failed, no payload provided`,
         HttpStatus.BAD_REQUEST,
       );
     }
+
     if (this.isEmptyMessage(value.message)) {
       throw new HttpException(
         `validation failed, message should have at least  one field`,
@@ -50,6 +59,10 @@ export class CustomValidationPipe implements PipeTransform {
       return true;
     }
     return false;
+  }
+
+  private isInvalidDate(timestamp: any) {
+    return new Date(timestamp).getTime() < 0;
   }
 
   private isNotIpV4(ip: any) {

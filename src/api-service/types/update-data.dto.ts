@@ -3,7 +3,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   IsOptional,
   IsNotEmpty,
-  IsDateString,
   IsIP,
   IsDefined,
   IsString,
@@ -12,10 +11,12 @@ import {
 } from 'class-validator';
 
 class Message {
+  @IsOptional()
   @ApiProperty()
   @IsString()
   foo: string;
 
+  @IsOptional()
   @ApiProperty()
   @IsString()
   baz: string;
@@ -24,8 +25,7 @@ class Message {
 export class UpdateDataDto {
   @ApiProperty()
   @IsNotEmpty()
-  @IsDateString()
-  ts: string; // 2020-02-08T0 20200208
+  ts: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -41,7 +41,7 @@ export class UpdateDataDto {
   @ApiProperty()
   @IsOptional()
   @IsIP()
-  send_from_ip: string; //684D:1111:222:3333:4444:5555:6:77  //19.117.63.126
+  send_from_ip: string;
   @ApiProperty()
   @IsOptional()
   @IsNumber()
