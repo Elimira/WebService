@@ -2,11 +2,11 @@
 import { Db, ObjectID } from 'mongodb';
 import { InjectConnection } from '../mongo/index';
 import { Injectable, Logger } from '@nestjs/common';
-import { Status, CreateDataDto } from './types/index';
-import { IGetApiResponse } from './interfaces';
+import { CreateDataDto, Status } from 'src/publisher/types';
+import { IGetApiResponse } from 'src/publisher/interfaces';
 
 @Injectable()
-export class PublisherService {
+export class StoreService {
   logger = new Logger();
   constructor(@InjectConnection() private readonly mongoConnection: Db) {}
 

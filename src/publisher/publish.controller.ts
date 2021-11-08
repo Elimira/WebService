@@ -13,16 +13,16 @@ import {
 import { ApiParam } from '@nestjs/swagger';
 import { IGetApiResponse } from './interfaces/index';
 import { ObjectID } from 'mongodb';
-import { PublisherService } from './publish.service';
 import { CreateDataDto, CustomValidationPipe } from './types/index';
 import { ClientProxy } from '@nestjs/microservices';
+import { StoreService } from 'src/store/store.service';
 
 @Controller('/api')
 @UseInterceptors(ClassSerializerInterceptor)
 export class PublisherController {
   logger = new Logger();
   constructor(
-    private readonly publisherService: PublisherService,
+    private readonly storeService: StoreService,
     //@Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
   ) {}
 
@@ -30,11 +30,11 @@ export class PublisherController {
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() createDataDto: CreateDataDto): Promise<boolean> {
     //this.client.emit<number>('user_created', "test test test");
-    return await this.publisherService.addPayload(createDataDto);
+    return await this.storeService.addPayload(createDataDto);
   }  
   @Get('/search')
   async getAllWebData(): Promise<IGetApiResponse> {
-    return await this.publisherService.getAllPayloads();
+    return await this.storeService.getAllPayloads();
   }
 
   @Get('/search:id')
@@ -46,6 +46,6 @@ export class PublisherController {
     schema: { type: 'string' },
   })
   async getWebData(@Param('id') id: string): Promise<IGetApiResponse> {
-    return await this.publisherService.getPayloadById(new ObjectID(id));
+    return await this.storeService.getPayloadById(new ObjectID(id));
   }
 }

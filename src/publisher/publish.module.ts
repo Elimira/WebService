@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { PublisherController } from './publish.controller';
-import { PublisherService } from './publish.service';
+import { StoreService } from 'src/store/store.service';
  
 @Module({
   imports: [ConfigModule],
   controllers: [PublisherController],
   providers: [
-    PublisherService,
+    StoreService,
     {
       provide: 'PUBLISH_PAYLOAD',
       useFactory: (configService: ConfigService) => {
