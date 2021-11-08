@@ -38,7 +38,7 @@ export class CustomValidationPipe implements PipeTransform {
 
     if (this.isEmptyMessage(value.message)) {
       throw new HttpException(
-        `validation failed, message should have at least  one field`,
+        `validation failed, message should have at least one field`,
         HttpStatus.BAD_REQUEST,
       );
     }

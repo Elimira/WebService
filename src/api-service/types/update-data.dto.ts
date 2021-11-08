@@ -11,14 +11,14 @@ import {
 } from 'class-validator';
 
 class Message {
-  @IsOptional()
   @ApiProperty()
   @IsString()
+  @IsOptional()
   foo: string;
 
-  @IsOptional()
   @ApiProperty()
   @IsString()
+  @IsOptional()
   baz: string;
 }
 
