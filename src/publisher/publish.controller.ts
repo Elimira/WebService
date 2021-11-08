@@ -23,12 +23,13 @@ export class PublisherController {
   logger = new Logger();
   constructor(
     private readonly storeService: StoreService,
-  ) //@Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
+  ) //TODO: @Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
   {}
 
   @Post('/payloads')
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() createDataDto: CreateDataDto): Promise<boolean> {
+    //TODO: Instead of persisting payload, send them to the queue to be picked by consumer.
     //this.client.emit<number>('PUBLISH_PAYLOAD', createDataDto);
     return await this.storeService.addPayload(createDataDto);
   }

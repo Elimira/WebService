@@ -9,6 +9,6 @@ export class ConsumerController {
 
   @EventPattern('PUBLISH_PAYLOAD')
   async ConsumePayload(data: CreateDataDto) {
-    //await this.storeService.addPayload(data);
+    //TODO: await this.storeService.addPayload(data);
   }
 }

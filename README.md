@@ -8,7 +8,6 @@ This project is bootstrapped with [Nest](https://github.com/nestjs/nest) framewo
   - [Running the app with docker](#running-the-app-with-docker)
   - [Running the app locally](#running-the-app-locally)
 - [Test](#test)
-- [Access Databases](#access-databases)
 
  ## Folder Structure
 
@@ -42,7 +41,7 @@ WebService
 
  docker-compose up
 ```
-then please go to http://localhost:3333/api/ for accessing exposed apis. 
+then please go to http://localhost:3333/api/ for accessing exposed APIs. 
 
 ### `Running the app locally`
 
@@ -65,7 +64,7 @@ yarn build
 yarn run start
 
 ```
-again you could go to http://localhost:3333/api/ for accessing exposed apis. 
+again you could go to http://localhost:3333/api/ for accessing exposed APIs. 
 
 ### Test
 
