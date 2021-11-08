@@ -61,15 +61,13 @@ yarn
 
 yarn build
 
-# watch mode
-yarn run start:dev
+yarn run start
 
 ```
 ### Test
 
 ```bash
 
-# e2e tests
 yarn run test:e2e
 
 ```

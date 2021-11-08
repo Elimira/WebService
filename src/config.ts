@@ -23,8 +23,8 @@ const config: IConfig = {
     .addTag('Unity ♥')
     .build(),
   microserviceOptions: {
-    user: 'admin',
-    password: 'admin',
+    user: 'guest',
+    password: 'guest',
     host: 'localhost:5672',
     queueName: 'email-subscribers',
   },
