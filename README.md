@@ -22,11 +22,13 @@ WebService
 ├── package.json
 ├── src
     ├── __mocks__
-    ├── api-service
     ├── app
     ├── config.ts
+    ├── consumer
     ├── main.ts
-    └── mongo
+    ├── mongo
+    ├── publisher
+    └── store
 ├── test
 ```
 
@@ -40,7 +42,7 @@ WebService
 
  docker-compose up
 ```
-then please go to http://localhost:3333/api/ address to Play with apis. 
+then please go to http://localhost:3333/api/ for accessing exposed apis. 
 
 ### `Running the app locally`
 
@@ -63,8 +65,8 @@ yarn build
 yarn run start
 
 ```
+again you could go to http://localhost:3333/api/ for accessing exposed apis. 
 
-After running locally, you could go to http://localhost:3333/api/ address to Play with apis. 
 ### Test
 
 ```bash
