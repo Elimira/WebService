@@ -23,15 +23,15 @@ export class PublisherController {
   logger = new Logger();
   constructor(
     private readonly storeService: StoreService,
-    //@Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
-  ) {}
+  ) //@Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
+  {}
 
   @Post('/payloads')
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() createDataDto: CreateDataDto): Promise<boolean> {
     //this.client.emit<number>('user_created', "test test test");
     return await this.storeService.addPayload(createDataDto);
-  }  
+  }
   @Get('/search')
   async getAllWebData(): Promise<IGetApiResponse> {
     return await this.storeService.getAllPayloads();

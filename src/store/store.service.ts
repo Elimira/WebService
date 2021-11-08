@@ -46,8 +46,8 @@ export class StoreService {
   }
 
   async getPayloadById(id: ObjectID): Promise<IGetApiResponse> {
-    this.logger.log("in me")
-    this.logger.log(id)
+    this.logger.log('in me');
+    this.logger.log(id);
     try {
       const payload = await this.mongoConnection
         .collection('data')
@@ -58,7 +58,7 @@ export class StoreService {
     }
   }
 
-  handleError(error: string): IGetApiResponse{
+  handleError(error: string): IGetApiResponse {
     this.logger.error(error);
     switch (error) {
       case 'Error: Invalid input data':
