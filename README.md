@@ -41,6 +41,7 @@ WebService
 
  docker-compose up
 ```
+then please go to http://localhost:3333/api/ address to Play with apis. 
 
 ### `Running the app locally`
 
