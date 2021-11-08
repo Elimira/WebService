@@ -1,6 +1,6 @@
 ## Description
 
-This project was bootstrapped with [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is bootstrapped with [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Table of Contents
 - [Folder Structure](#folder-structure)
