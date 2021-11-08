@@ -1,17 +1,14 @@
 //import indexList from './mongoIndexes';
-import { Db, ObjectID, MongoClient } from 'mongodb';
-import { InjectConnection, InjectClient } from '../mongo/index';
+import { Db, ObjectID } from 'mongodb';
+import { InjectConnection } from '../mongo/index';
 import { Injectable, Logger } from '@nestjs/common';
-import { UpdateDataDto } from './types/index';
+import { Status, UpdateDataDto } from './types/index';
 import { IGetApiResponse } from './interfaces';
 
 @Injectable()
 export class ApiService {
   logger = new Logger();
-  constructor(
-    @InjectConnection() private readonly mongoConnection: Db,
-    @InjectClient() private readonly mongoClient: MongoClient,
-  ) {}
+  constructor(@InjectConnection() private readonly mongoConnection: Db) {}
 
   async addPayload({
     ts,
@@ -30,6 +27,7 @@ export class ApiService {
       });
       return true;
     } catch (error) {
+      this.logger.error(error);
       return false;
     }
   }
@@ -41,13 +39,15 @@ export class ApiService {
         .find({})
         .sort({ priority: 1 })
         .toArray();
-      return { status: 200, res: payloads };
+      return { status: Status.Successful, res: payloads };
     } catch (error) {
       return this.handleError(error);
     }
   }
 
   async getPayloadById(id: ObjectID): Promise<IGetApiResponse> {
+    this.logger.log("in me")
+    this.logger.log(id)
     try {
       const payload = await this.mongoConnection
         .collection('data')
@@ -58,13 +58,13 @@ export class ApiService {
     }
   }
 
-  handleError(error: string) {
+  handleError(error: string): IGetApiResponse{
     this.logger.error(error);
     switch (error) {
       case 'Error: Invalid input data':
-        return { status: 400, res: [] };
+        return { status: Status.BadRequest, res: error };
       default:
-        return { status: 503, res: [] };
+        return { status: Status.ServerUnavailable, res: error };
     }
   }
 }

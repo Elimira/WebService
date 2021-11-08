@@ -26,12 +26,7 @@ export class ApiController {
 
   @Get('/search')
   async getAllWebData(): Promise<IGetApiResponse> {
-    try {
-      return await this.apiService.getAllPayloads();
-    } catch (error) {
-      this.logger.log(error);
-      return { status: 404, res: [] };
-    }
+    return await this.apiService.getAllPayloads();
   }
 
   @Get('/search:id')
@@ -39,15 +34,10 @@ export class ApiController {
     name: 'id',
     required: true,
     description:
-      'First, you could run the above `Get` request to fetch all payload records, then copy the `_id` field of one of them here.',
+      'First, you could run the above `Get` request to fetch all payload records, then copy the `_id` field of one of them here (without "").',
     schema: { type: 'string' },
   })
   async getWebData(@Param('id') id: string): Promise<IGetApiResponse> {
-    try {
-      return await this.apiService.getPayloadById(new ObjectID(id));
-    } catch (error) {
-      this.logger.log(error);
-      return { status: 404, res: [] };
-    }
+    return await this.apiService.getPayloadById(new ObjectID(id));
   }
 }

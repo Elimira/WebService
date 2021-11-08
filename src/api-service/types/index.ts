@@ -1,2 +1,3 @@
 export { UpdateDataDto } from './update-data.dto';
-export { CustomValidationPipe } from './CustomValidationPipe'
+export { Status } from './Status';
+export { CustomValidationPipe } from './CustomValidationPipe';
