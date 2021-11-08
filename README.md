@@ -72,18 +72,3 @@ After running locally, you could go to http://localhost:3333/api/ address to Pla
 yarn run test:e2e
 
 ```
-
-
-## Access Databases
- 
-  ### Docker
-  - After configuring everything `docker-compose up` runs a new mongodb container.
-  - It stores database data inside a docker volume `mongodb_data`.
-  - __When mongo container is running__  Mongo is exposed to port 29017  so:
-    - you can restore old db files using `mongorestore -h localhost --port 29017` 
-    - you can connect with a mongo IDE/GUI like [Studio 3t](https://studio3t.com) or just run
-      ```bash
-      $ docker exec -it web_mongo_1 mongo --port 29017
-      ```
-  ### Locally
-  - Mongo is exposed to port 27017
