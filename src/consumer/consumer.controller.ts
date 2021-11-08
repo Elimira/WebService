@@ -6,8 +6,7 @@ import { CreateDataDto } from '../publisher/types/index';
 export class ConsumerController {
   constructor() {}
   logger = new Logger();
-  
+
   @EventPattern('PUBLISH_PAYLOAD')
   async ConsumePayload(data: CreateDataDto) {}
 }
-

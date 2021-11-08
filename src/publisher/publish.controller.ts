@@ -15,7 +15,7 @@ import { IGetApiResponse } from './interfaces/index';
 import { ObjectID } from 'mongodb';
 import { CreateDataDto, CustomValidationPipe } from './types/index';
 import { ClientProxy } from '@nestjs/microservices';
-import { StoreService } from 'src/store/store.service';
+import { StoreService } from '../store/store.service';
 
 @Controller('/api')
 @UseInterceptors(ClassSerializerInterceptor)

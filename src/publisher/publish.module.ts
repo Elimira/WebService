@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
+import { StoreService } from '../store/store.service';
 import { PublisherController } from './publish.controller';
-import { StoreService } from 'src/store/store.service';
 
 @Module({
   imports: [ConfigModule],

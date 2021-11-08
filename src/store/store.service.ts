@@ -2,8 +2,8 @@
 import { Db, ObjectID } from 'mongodb';
 import { InjectConnection } from '../mongo/index';
 import { Injectable, Logger } from '@nestjs/common';
-import { CreateDataDto, Status } from 'src/publisher/types';
-import { IGetApiResponse } from 'src/publisher/interfaces';
+import { CreateDataDto, Status } from '../publisher/types';
+import { IGetApiResponse } from '../publisher/interfaces';
 
 @Injectable()
 export class StoreService {
