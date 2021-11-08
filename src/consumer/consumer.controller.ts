@@ -8,5 +8,7 @@ export class ConsumerController {
   logger = new Logger();
 
   @EventPattern('PUBLISH_PAYLOAD')
-  async ConsumePayload(data: CreateDataDto) {}
+  async ConsumePayload(data: CreateDataDto) {
+    //await this.storeService.addPayload(data);
+  }
 }

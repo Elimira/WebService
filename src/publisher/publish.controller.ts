@@ -29,7 +29,7 @@ export class PublisherController {
   @Post('/payloads')
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() createDataDto: CreateDataDto): Promise<boolean> {
-    //this.client.emit<number>('user_created', "test test test");
+    //this.client.emit<number>('PUBLISH_PAYLOAD', createDataDto);
     return await this.storeService.addPayload(createDataDto);
   }
   @Get('/search')
