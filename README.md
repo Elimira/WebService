@@ -18,7 +18,6 @@ WebService
 ├── README.md
 ├── dist
 ├── docker-compose.yml
-├── nest-cli.json
 ├── node_modules
 ├── package.json
 ├── src
