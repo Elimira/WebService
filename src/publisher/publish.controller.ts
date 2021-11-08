@@ -29,7 +29,7 @@ export class PublisherController {
   @Post('/payloads')
   @UsePipes(CustomValidationPipe)
   async takeWebData(@Body() createDataDto: CreateDataDto): Promise<boolean> {
-    //TODO: Instead of persisting payload, send them to the queue to be picked by consumer.
+    //TODO: Instead of persisting payload, send them to the queue to be picked up by consumer.
     //this.client.emit<number>('PUBLISH_PAYLOAD', createDataDto);
     return await this.storeService.addPayload(createDataDto);
   }
