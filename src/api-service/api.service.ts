@@ -28,7 +28,7 @@ export class ApiService {
         send_from_ip: send_from_ip,
         priority: priority,
       });
-      return true; //res.ops[0]
+      return true;
     } catch (error) {
       return false;
     }
