@@ -18,11 +18,11 @@ services:
           - "15672:15672"
         env_file:
           - ./.env
-
+          
     web-service:
         build:
-            context: .
-            dockerfile: Dockerfile
+          context: .
+          dockerfile: Dockerfile
         depends_on:
           - rabbitmq
         environment:
@@ -32,10 +32,10 @@ services:
           - 3333:3333
 
     mongo:
-        image: mongo:latest
-        volumes: 
-          - mongodb_data:/data/db
-        command:  mongod --port 29017
-        ports:
-          - 29017:29017
+      image: mongo:latest
+      volumes: 
+        - mongodb_data:/data/db
+      command:  mongod --port 29017
+      ports:
+       - 29017:29017
             
