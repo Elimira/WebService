@@ -12,7 +12,7 @@ import {
 import { ApiParam } from '@nestjs/swagger';
 import { IGetApiResponse } from './interfaces/index';
 import { ObjectID } from 'mongodb';
-import { ApiService } from './api.service';
+import { ApiService } from './publish.service';
 import { UpdateDataDto, CustomValidationPipe } from './types/index';
 //import { ClientProxy } from '@nestjs/microservices';
 
