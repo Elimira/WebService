@@ -91,7 +91,7 @@ npm run test:cov
     - you can restore old db files using `mongorestore -h localhost --port 29017` 
     - you can connect with a mongo IDE/GUI like [Studio 3t](https://studio3t.com) or just run
       ```bash
-      $ docker exec -it tree_mongo_1 mongo --port 29017
+      $ docker exec -it web_mongo_1 mongo --port 29017
       ```
   ### Locally
   - Mongo is exposed to port 27017
