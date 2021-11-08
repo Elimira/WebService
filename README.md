@@ -9,8 +9,6 @@ This project was bootstrapped with [Nest](https://github.com/nestjs/nest) framew
   - [Running the app locally](#running-the-app-locally)
   - [Test](#test)
 - [Access Databases](#access-databases)
-- [Algorithm Mindset](#algorithm-mindset)
-
 
  ## Folder Structure
 
@@ -37,14 +35,7 @@ WebService
 
 ### `Running the app with docker`
 
-Before getting started you should have the following installed on your machine:  
-  - docker
-  - docker-compose
-
-Run these sequentially in the project directory:
 ```bash
-# Build the container images 
-# Watch for possible build errors if you had error you should build again  
  docker-compose build
 
 
@@ -71,7 +62,7 @@ yarn
 yarn build
 
 # watch mode
-npm run start:dev
+yarn run start:dev
 
 ```
 ### Test
