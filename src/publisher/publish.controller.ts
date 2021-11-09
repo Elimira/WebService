@@ -22,9 +22,8 @@ import { StoreService } from '../store/store.service';
 export class PublisherController {
   logger = new Logger();
   constructor(
-    private readonly storeService: StoreService,
-  ) //TODO: @Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
-  {}
+    private readonly storeService: StoreService, //TODO: @Inject('PUBLISH_PAYLOAD') private client: ClientProxy,
+  ) {}
 
   @Post('/payloads')
   @UsePipes(CustomValidationPipe)
@@ -42,8 +41,7 @@ export class PublisherController {
   @ApiParam({
     name: 'id',
     required: true,
-    description:
-      'First, you could run the above `Get` request to fetch all payload records, then copy the `_id` field of one of them here (without "").',
+    description: '',
     schema: { type: 'string' },
   })
   async getWebData(@Param('id') id: string): Promise<IGetApiResponse> {
