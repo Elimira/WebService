@@ -1,12 +1,12 @@
 ## Description
 
-This project is bootstrapped with [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This service provides an API that parses a specific JSON schema and saves it to a DB, through a queue. It is built using Typescript and the [Nest.js](https://github.com/nestjs/nest) framework.
 
 ## Table of Contents
 - [Folder Structure](#folder-structure)
-- [Running Program](#available-scripts)
-  - [Running the app with docker](#running-the-app-with-docker)
-  - [Running the app locally](#running-the-app-locally)
+- [Running Server](#running-server)
+  - [Running with docker](#running-with-docker)
+  - [Running locally](#running-locally)
 - [Test](#test)
 
  ## Folder Structure
@@ -31,9 +31,11 @@ WebService
 ├── test
 ```
 
-## Available Scripts
+## Running Server
 
-### `Running the app with docker`
+### `Running with docker`
+
+To run the server:
 
 ```bash
  docker-compose build
@@ -41,9 +43,8 @@ WebService
 
  docker-compose up
 ```
-then please go to http://localhost:3333/api/ for accessing exposed APIs. 
-
-### `Running the app locally`
+When everything is ready, your server will be accessible via `http://localhost:3333/api/ `
+### `Running locally`
 
 - Install RabbitMQ
 - Install Nodejs
@@ -64,9 +65,8 @@ yarn build
 yarn run start
 
 ```
-again you could go to http://localhost:3333/api/ for accessing exposed APIs. 
-
 ### Test
+To run the tests:
 
 ```bash
 
