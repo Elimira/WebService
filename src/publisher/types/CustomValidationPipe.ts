@@ -8,7 +8,7 @@ import {
 import { Validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
 import * as IpAddress from 'ip-address';
-import { CreateDataDto } from '.';
+import { CreateDataDto, Message } from '.';
 
 @Injectable()
 export class CustomValidationPipe implements PipeTransform {
@@ -22,11 +22,13 @@ export class CustomValidationPipe implements PipeTransform {
       );
     }
 
-    if (this.isNotIpV4(value.sent_from_ip)) {
-      throw new HttpException(
-        `validation failed, Invalid IPv4 address`,
-        HttpStatus.BAD_REQUEST,
-      );
+    if (value?.sent_from_ip) {
+      if (this.isNotIpV4(value.sent_from_ip)) {
+        throw new HttpException(
+          `validation failed, Invalid IPv4 address`,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
     }
 
     if (this.isEmpty(value)) {
@@ -43,25 +45,25 @@ export class CustomValidationPipe implements PipeTransform {
       );
     }
     const object = plainToClass(metatype, value);
-    const error = await Validate(object);
+    await Validate(object);
     return value;
   }
 
-  private isEmpty(value: any) {
+  private isEmpty(value: CreateDataDto) {
     if (Object.keys(value).length < 1) {
       return true;
     }
     return false;
   }
 
-  private isEmptyMessage(message: any) {
+  private isEmptyMessage(message: Message) {
     if (Object.keys(message).length < 1) {
       return true;
     }
     return false;
   }
 
-  private isInvalidDate(timestamp: any) {
+  private isInvalidDate(timestamp: string) {
     return new Date(timestamp).getTime() < 0;
   }
 

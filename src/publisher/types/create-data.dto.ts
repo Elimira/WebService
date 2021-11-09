@@ -10,7 +10,7 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-class Message {
+export class Message {
   @ApiProperty()
   @IsString()
   @IsOptional()
