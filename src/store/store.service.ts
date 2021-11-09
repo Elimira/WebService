@@ -14,7 +14,7 @@ export class StoreService {
     ts,
     sender,
     message,
-    send_from_ip,
+    sent_from_ip,
     priority,
   }: CreateDataDto): Promise<boolean> {
     try {
@@ -22,7 +22,7 @@ export class StoreService {
         ts: ts,
         sender: sender,
         message: message,
-        send_from_ip: send_from_ip,
+        sent_from_ip: sent_from_ip,
         priority: priority,
       });
       return true;

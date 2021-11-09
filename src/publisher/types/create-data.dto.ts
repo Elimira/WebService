@@ -41,7 +41,7 @@ export class CreateDataDto {
   @ApiProperty()
   @IsOptional()
   @IsIP()
-  send_from_ip: string;
+  sent_from_ip: string;
   @ApiProperty()
   @IsOptional()
   @IsNumber()

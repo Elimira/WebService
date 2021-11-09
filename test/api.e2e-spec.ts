@@ -16,7 +16,7 @@ describe('APIController (e2e)', () => {
           foo: 'bar',
           baz: 'bang',
         },
-        send_from_ip: '19.117.63.126',
+        sent_from_ip: '19.117.63.126',
         priority: 4,
       })
       .expect(201)
@@ -33,7 +33,7 @@ describe('APIController (e2e)', () => {
         message: {
           foo: 'foo without baz',
         },
-        send_from_ip: '19.117.63.126',
+        sent_from_ip: '19.117.63.126',
         priority: 4,
       })
       .expect(201)
@@ -47,14 +47,14 @@ describe('APIController (e2e)', () => {
       .send({
         ts: '20200208',
         sender: 'first-e2e-user',
-        send_from_ip: '19.117.63.126',
+        sent_from_ip: '19.117.63.126',
         priority: 4,
       })
       .expect(400)
       .set('created', 'application/json');
   });
 
-  it('/ (takeWebData): It should be rejected, because send_from_ip is `Ipv6` NOT `Ipv4`', async () => {
+  it('/ (takeWebData): It should be rejected, because sent_from_ip is `Ipv6` NOT `Ipv4`', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/payloads')
       .send({
@@ -64,7 +64,7 @@ describe('APIController (e2e)', () => {
           foo: 'bar',
           baz: 'bang',
         },
-        send_from_ip: '684D:1111:222:3333:4444:5555:6:77',
+        sent_from_ip: '684D:1111:222:3333:4444:5555:6:77',
         priority: 4,
       })
       .expect(400)
@@ -81,7 +81,7 @@ describe('APIController (e2e)', () => {
           foo: 'bar',
           baz: 'bang',
         },
-        send_from_ip: '19.117.63.126',
+        sent_from_ip: '19.117.63.126',
         priority: 4,
         non_whitelisted: 'Poor field, pity!',
       })

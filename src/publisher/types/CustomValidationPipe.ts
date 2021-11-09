@@ -22,7 +22,7 @@ export class CustomValidationPipe implements PipeTransform {
       );
     }
 
-    if (this.isNotIpV4(value.send_from_ip)) {
+    if (this.isNotIpV4(value.sent_from_ip)) {
       throw new HttpException(
         `validation failed, Invalid IPv4 address`,
         HttpStatus.BAD_REQUEST,
